@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+   <children>
+      <Region layoutY="25.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #00bfff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+      <Label layoutX="48.0" layoutY="35.0" prefHeight="61.0" prefWidth="257.0" text="iManager" textFill="#e6ede6" AnchorPane.leftAnchor="48.0">
+         <font>
+            <Font name="Centaur" size="49.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Customer settings">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#viewCusomerControlPanel" text="Customer control " />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Item settings">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#viewItemControlPanel" text="Item Control" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Advance search">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#viewBillSerachPanel" text="Search by customers and bill date" />
+                  <MenuItem mnemonicParsing="false" onAction="#viewItemSearchPanel" text="Search by item sold" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tableView" layoutX="32.0" layoutY="347.0" prefHeight="178.0" prefWidth="760.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="347.0">
+        <columns>
+          <TableColumn fx:id="itemNameColumn" prefWidth="500.0" text="Item" />
+          <TableColumn fx:id="QTYColumn" prefWidth="120.0" text="QTY" />
+            <TableColumn fx:id="unitPriceColumn" prefWidth="120.0" text="Unit price" />
+            <TableColumn fx:id="totalPriceColumn" prefWidth="120.0" text="Total price" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox layoutX="19.0" layoutY="270.0" spacing="10.0" />
+      <HBox layoutX="485.0" layoutY="270.0" spacing="10.0" />
+      <GridPane layoutX="180.0" layoutY="531.0" prefHeight="30.0" prefWidth="311.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="180.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="212.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="320.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Total">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalPrice" prefHeight="27.0" prefWidth="101.0" text="0.00" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+         </children>
+      </GridPane>
+      <GridPane layoutX="32.0" layoutY="118.0" prefHeight="113.0" prefWidth="780.0" style="-fx-background-color: #ebf0fa;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="159.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="371.0" minWidth="10.0" prefWidth="371.0" />
+            <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#selectCustomer" prefHeight="36.0" prefWidth="77.0" text="Select..">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="customerName" prefHeight="27.0" prefWidth="417.0" text="Please select customer..." GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Discount" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="discount" prefHeight="37.0" prefWidth="200.0" style="-fx-border-color: #99ccff;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+      <Pane layoutX="474.0" layoutY="243.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#insert" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #80bfff;" text="Insert">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutY="60.0" mnemonicParsing="false" onAction="#remove" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: #ff8080;" text="Remove">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <HBox layoutX="14.0" layoutY="241.0" prefHeight="39.0" prefWidth="469.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="317.0">
+         <children>
+            <Button layoutX="45.0" layoutY="381.0" mnemonicParsing="false" onAction="#selectItem" prefHeight="34.0" prefWidth="77.0" text="Select..">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="itemName" layoutX="343.0" layoutY="387.0" prefHeight="44.0" prefWidth="341.0" text="Please select an item...">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <Button layoutX="20.0" layoutY="526.0" mnemonicParsing="false" onAction="#createOrder" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #80bfff;" text="Create" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="492.0" layoutY="528.0" mnemonicParsing="false" onAction="#cancelOrder" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ff8080;" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Pane layoutX="10.0" layoutY="288.0" prefHeight="46.0" prefWidth="302.0" AnchorPane.leftAnchor="20.0">
+         <children>
+            <TextField fx:id="qty" layoutX="73.0" layoutY="5.0" prefHeight="37.0" prefWidth="74.0" style="-fx-border-color: #99ccff;" text="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label prefHeight="46.0" prefWidth="44.0" text="QTY">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
